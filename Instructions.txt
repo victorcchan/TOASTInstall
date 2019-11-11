@@ -1,0 +1,16 @@
+1) Copy InstallTOASTwDeps.sh to machine
+2) $source InstallTOASTwDeps.sh
+    a) Can do this from any location on machine to be installed on
+    b) Downloads packages from GitHub into temporary directories
+    c) Installs packages into virtual environment located in ${HOME}/venv-toast/
+3) Add the function at the end of this document to your .bashrc
+    a) This creates a command '$toast' that activates the virtual environment
+    b) The command also adds the installed library/package paths to your environment variables
+
+.bashrc function:
+toast() {
+    source ${HOME}/venv-toast/bin/activate
+    export PATH=$HOME/venv-toast/bin/:$PATH
+    export LD_LIBRARY_PATH=$HOME/venv-toast/lib/:$LD_LIBRARY_PATH
+    export PYTHONPATH=$HOME/venv-toast/lib/python3.6/site-packages/:$PYTHONPATH
+}
