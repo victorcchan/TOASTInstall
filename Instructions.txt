@@ -11,6 +11,11 @@
 toast() {
     source ${HOME}/venv-toast/bin/activate
     export PATH=$HOME/venv-toast/bin/:$PATH
+    export CPATH=$HOME/venv-toast/include:$CPATH
+    export LIBRARY_PATH=$HOME/venv-toast/lib:$LIBRARY_PATH
     export LD_LIBRARY_PATH=$HOME/venv-toast/lib/:$LD_LIBRARY_PATH
-    export PYTHONPATH=$HOME/venv-toast/lib/python3.6/site-packages/:$PYTHONPATH
+    export LIBRARY_PATH=$HOME/venv-toast/lib64:$LIBRARY_PATH
+    export LD_LIBRARY_PATH=$HOME/venv-toast/lib64/:$LD_LIBRARY_PATH
+    pysite=$(python3 --version 2>&1 | awk '{print $2}' | sed -e "s#\(.*\)\.\(.*\)\..*#\1.\2#")
+    export PYTHONPATH="$HOME/venv-toast/lib/python${pysite}/site-packages:${PYTHONPATH}"
 }
